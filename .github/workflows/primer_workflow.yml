@@ -1,0 +1,12 @@
+name: CI Simple
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Ejecutar script
+        run: echo '¡Hola desde GitHub Actions!'
