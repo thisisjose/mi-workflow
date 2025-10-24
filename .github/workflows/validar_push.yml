@@ -1,0 +1,26 @@
+name: Push Branch Validator
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  validar_rama:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar nombre de la rama
+        run: |
+          echo "Se hizo push a la rama: ${{ github.ref_name }}"
+
+      - name: Validar prefijo de rama
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          if echo "$BRANCH" | grep -Eq '^(feature/|bugfix/|hotfix/)'; then
+            echo "✅ La rama cumple con la convención: $BRANCH"
+          else
+            echo "❌ La rama '$BRANCH' no cumple con la convención (feature/, bugfix/, hotfix/)"
+            exit 1
+          fi
