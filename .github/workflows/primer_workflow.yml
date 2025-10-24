@@ -1,4 +1,4 @@
-name: CI Simple (Python)
+name: CI Simple (Shell)
 on: [push]
 
 jobs:
@@ -9,12 +9,7 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v3
 
-      - name: Instalar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Ejecutar script Python
+      - name: Ejecutar script Shell
         run: |
-          echo "Ejecutando Python..."
-          python -c "print('Hola desde Python en GitHub Actions! 🚀')"
+          echo "Hola desde Shell"
+          echo "Workflow ejecutado correctamente"
